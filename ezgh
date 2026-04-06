@@ -8,7 +8,9 @@ then
 	echo "usage : ezgh <option> <args>"
 	echo "available options : "
 	echo "	-p <msg> pushes the current repo to main, with <msg> as the commit message"
-	echo -e "	-b <name> creates a new branch with <name> as the branche's name\n"
+	echo "	-b <name> creates a new branch with <name> as the branche's name"
+	echo "	-c <repo> clones a repository from your github page, using the MYGH variable as your github profile's URL"
+	echo -e "	--seturl <name> sets the MYGH variable by appending <name> to github's URL\n"
 	exit 0
 fi
 
@@ -38,6 +40,25 @@ then
     		exit 1
 		fi
 		exit 0
+	fi
+
+	if [[ $1 = "-c" ]]
+	then
+		git clone $(echo $MYGH $2 | tr -d " ")
+		exit 0
+	fi
+
+	if [[ $1 = "--seturl" ]]
+	then
+		VERIF=$(echo "MYGH=https://github.com/" $2 | tr -d " ")
+		if [[ $(echo ~.bashrc | grep "MYGH=" | wc -l) -eq 0 ]]
+		then
+			echo -e "\nexport $VERIF" >> ~/.bashrc
+			exit 0
+		else
+			echo "ezgh : The MYGH variable is already set in .bashrc."
+			exit 1
+		fi
 	fi
 fi
 
