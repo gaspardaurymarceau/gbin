@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+if [[ $# -eq 0 ]]
+then
+    lsrp_aux "$(pwd)/"
+else
+    for i in $@
+    do
+        lsrp_aux "$(pwd)/" $i
+    done
+fi

@@ -1,0 +1,4 @@
+#! /bin/bash
+if [[ $# -eq 1 && -f "$1.ml" ]]
+ then ocamlfind ocamlc -package bogue -linkpkg -o $1 -thread "$1.ml"
+fi

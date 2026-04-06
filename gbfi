@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+if [[ $# -eq 1 ]]
+then
+	$(dirname "$0")/Util/gbfi_aux $1
+	exit 0
+fi
+
+if [[ $# -eq 2 ]]
+then
+	if [[ $1 == "-f" ]]
+	then $(dirname "$0")/Util/gbfi_aux $(cat $2 | tr -d "\n ")
+	exit 0
+	fi
+	if [[ $1 == "-h" ]]
+	then
+		echo "gbfi : goldrev's brainfuck interpreter"
+		echo "please note that this program will ask for each input (',') individually"
+		echo "moreover, the memory cells are not capped at 256."
+		echo "use the -f option to read from a file instead of a string"
+	else
+		echo "unknown option, please use the -h option to get more information about this command"
+	fi
+else echo "unknown arguments, please use the -h options to get more information on this command"
+fi

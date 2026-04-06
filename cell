@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+export COLUMNS
+
+if [[ $# -eq 0 ]]
+then $(dirname "$0")/Util/cell_aux -c ex 10000
+else $(dirname "$0")/Util/cell_aux "$@"
+fi
