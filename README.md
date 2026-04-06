@@ -1,2 +1,2 @@
 # gbin
-My personal addition to /bin
+My personal addition to /bin/
