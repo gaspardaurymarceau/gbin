@@ -44,7 +44,7 @@ then
 
 	if [[ $1 = "-c" ]]
 	then
-		git clone $(echo $MYGH $2 | tr -d " ")
+		git clone $(echo $MYGH "/" $2 | tr -d " ")
 		exit 0
 	fi
 
