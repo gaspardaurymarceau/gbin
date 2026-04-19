@@ -1,0 +1,42 @@
+#! /usr/bin/env bash
+
+if [[ $# -ne 1 ]]
+then
+	echo "Only one option is permitted, for more information please use up -h"
+	exit 1
+fi
+
+if [[ $1 = "-h" ]]
+then
+	echo "gup : my personnal updating tool. A glorified 'update & upgrade'"
+	echo "options :"
+	echo "\t-a for apt"
+	echo "\t-o for opam packages"
+	echo "\t-oo for opam itself (will delete and reinstall if opam is already present)"
+	echo "\t-e for an exhaustive update, except for opam, which will not be updated (-o is run but not -oo)"
+	exit 0
+fi
+
+if [[ $1 = "-a" ]]
+then
+	sudo apt update && sudo apt upgrade
+	exit 0
+fi
+
+if [[ $1 = "-o" ]]
+then
+	opam update && opam upgrade
+	exit 0
+fi
+
+if [[ $1 = "-oo" ]]
+then
+	bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
+	exit 0
+fi
+
+if [[ $1 = "-e" ]]
+then
+	gup -a && gup -o
+	exit 0
+fi
