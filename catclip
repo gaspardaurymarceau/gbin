@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+xclip -selection clipboard 2> /dev/null
+if [[ $? -ne 0 ]]
+then echo "catclip could not work. Maybe xclip is not installed ?"
+fi
