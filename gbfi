@@ -14,7 +14,7 @@ then
 	fi
 	if [[ $1 == "-h" ]]
 	then
-		echo "gbfi : goldrev's brainfuck interpreter"
+		echo "gbfi : Gaspard's brainfuck interpreter"
 		echo "please note that this program will ask for each input (',') individually"
 		echo "moreover, the memory cells are not capped at 256."
 		echo "use the -f option to read from a file instead of a string"
